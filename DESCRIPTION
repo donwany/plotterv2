@@ -1,0 +1,10 @@
+Package: plotterv2
+Type: Package
+Title: A Simple package to plot a scatter plot
+Version: 0.1.0
+Author: Theophilus Siameh
+Maintainer: The package maintainer <tsiameh@coderswhotravel.com>
+Description: Simple functions to read csv file and plot a scatter diagram
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 7.2.3
