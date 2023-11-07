@@ -10,5 +10,3 @@ PLT <- create_scatter_plot(data=df,
                            title='scatter plot of electricity')
 
 PLT
-
-

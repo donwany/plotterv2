@@ -22,5 +22,5 @@ the scatterplot diagram
 Define a function to create a scatter plot
 }
 \examples{
-create_scatter_plot(df, x=df['weight'], y=df['age'], title='scatter plot')
+create_scatter_plot(df, x='weight', y='age', title='scatter plot')
 }
