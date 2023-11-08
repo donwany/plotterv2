@@ -6,7 +6,7 @@ library(ggplot2)
 
 #' Define a function to read data from a CSV file
 #' @param file_path read the file path to the csv file
-#' @return the dataframe of the input file
+#' @return the data frame of the input file
 #' @examples
 #' df = read_data_from_csv("data.csv")
 #' @export
@@ -21,11 +21,11 @@ read_data_from_csv <- function(file_path) {
 
 #' Define a function to create a scatter plot
 #'
-#' @param dataframe the dataframe to plot
-#' @param x_col the x-column of the dataframe
-#' @param y_col the y-column of the dataframe
+#' @param dataframe the data frame to plot
+#' @param x_col the x-column of the data frame
+#' @param y_col the y-column of the data frame
 #' @param title the title of the scatter plot
-#' @return the scatterplot diagram
+#' @return the scatter plot diagram
 #' @examples
 #' create_scatter_plot(df, x='weight', y='age', title='scatter plot')
 #' @export
@@ -35,3 +35,34 @@ create_scatter_plot <- function(data, x_column, y_column, title) {
     labs(title = title)
   return(plot)
 }
+
+
+#' function performing statistical analysis to estimate the parameters
+#' of a normal distribution for a given data set along with a confidence intervals
+#' for the mean and standard deviation.
+#'
+#' @param x Input data set
+#' @param alpha significance level
+#' @returns Return a list containing the following elements: G,V, Cov, StdErr, ConfInts
+#' @examples
+#' x = c(2, 4, 6, 8, 10, 30, 45, 55)
+#' estegn(x, alpha = 0.01)
+#' @export
+estegn <- function(x, alpha = 0.05) {
+  n <- length(x)
+  mu <- mean(x)
+  sigma <- sqrt(var(x) / n)
+  t_value <- qt(1 - alpha / 2, df = n - 1)
+  mu_lower <- mu - t_value * sigma / sqrt(n)
+  mu_upper <- mu + t_value * sigma / sqrt(n)
+  sigma_lower <- sqrt((n - 1) * var(x) / qchisq(1 - alpha / 2, df = n - 1))
+  sigma_upper <- sqrt((n - 1) * var(x) / qchisq(alpha / 2, df = n - 1))
+  G <- matrix(c(mu, sigma), nrow = 2)
+  V <- matrix(c(sigma^2 / n, 0, 0, sigma^4 / (n * (n - 1))), nrow = 2)
+  Cov <- V
+  StdErr <- sqrt(diag(Cov))
+  ConfInts <- cbind(c(mu_lower, sigma_lower), c(mu_upper, sigma_upper))
+  return(list(G, V, Cov, StdErr, ConfInts))
+}
+
+

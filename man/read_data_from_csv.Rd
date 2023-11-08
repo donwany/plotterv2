@@ -10,7 +10,7 @@ read_data_from_csv(file_path)
 \item{file_path}{read the file path to the csv file}
 }
 \value{
-the dataframe of the input file
+the data frame of the input file
 }
 \description{
 Define a function to read data from a CSV file

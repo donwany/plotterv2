@@ -7,11 +7,10 @@ library(ggplot2)
 df = read_data_from_csv("~/Desktop/electricity_prices.csv")
 
 # Plot scatter
-PLT <- create_scatter_plot(data=df,
+plt <- create_scatter_plot(data=df,
                            x_column="HB_PAN",
                            y_column="HB_WEST",
                            title='scatter plot of electricity')
 
-PLT
-
+plt
 ```

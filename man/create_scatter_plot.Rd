@@ -9,14 +9,14 @@ create_scatter_plot(data, x_column, y_column, title)
 \arguments{
 \item{title}{the title of the scatter plot}
 
-\item{dataframe}{the dataframe to plot}
+\item{dataframe}{the data frame to plot}
 
-\item{x_col}{the x-column of the dataframe}
+\item{x_col}{the x-column of the data frame}
 
-\item{y_col}{the y-column of the dataframe}
+\item{y_col}{the y-column of the data frame}
 }
 \value{
-the scatterplot diagram
+the scatter plot diagram
 }
 \description{
 Define a function to create a scatter plot
