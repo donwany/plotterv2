@@ -1,8 +1,15 @@
 
 # PlotterV2
 
+
+# Install the pracma package if not already installed
+if (!requireNamespace("pracma", quietly = TRUE)) {
+  install.packages("pracma")
+}
+
 # Load necessary libraries
 library(ggplot2)
+library(pracma)
 
 #' Define a function to read data from a CSV file
 #' @param file_path read the file path to the csv file
@@ -43,7 +50,7 @@ create_scatter_plot <- function(data, x_column, y_column, title) {
 #'
 #' @param x Input data set
 #' @param alpha significance level
-#' @returns Return a list containing the following elements: G,V, Cov, StdErr, ConfInts
+#' @returns Return a list containing the following elements: G, V, Cov, StdErr, ConfInts
 #' @examples
 #' x = c(2, 4, 6, 8, 10, 30, 45, 55)
 #' estegn(x, alpha = 0.01)
@@ -65,4 +72,42 @@ estegn <- function(x, alpha = 0.05) {
   return(list(G, V, Cov, StdErr, ConfInts))
 }
 
+#' function to solve the quadratic equation
+#' @param a value for a
+#' @param b value for b
+#' @param c value for c
+#' @examples
+#' a <- 1; b <- -3; c <- 4
+#' roots <- solve_quadratic(a, b, c)
+#' cat("Roots:", roots, "\n")
+#'
+#' a <- 2; b <- -3; c <- 1
+#' roots <- solve_quadratic(a, b, c)
+#' cat("Roots:", roots, "\n")
+#'
+#' @export
+solve_quadratic <- function(a, b, c) {
+  # Calculate the discriminant
+  discriminant <- b^2 - 4 * a * c
+
+  # Check if the discriminant is non-negative
+  if (discriminant >= 0) {
+    # Calculate the two solutions
+    root1 <- (-b + sqrt(discriminant)) / (2 * a)
+    root2 <- (-b - sqrt(discriminant)) / (2 * a)
+
+    # Return the solutions as a vector
+    return(c(root1, root2))
+
+  } else if (discriminant < 0) {
+    # If the discriminant is negative, return a complex number
+    complex_root <- -b / (2 * a) + sqrt(-discriminant) / (2 * a) * 1i
+    return(c(complex_root, Conj(complex_root)))
+
+  } else {
+    # If the discriminant is zero, return a single solution
+    root <- -b / (2 * a)
+    return(root)
+  }
+}
 

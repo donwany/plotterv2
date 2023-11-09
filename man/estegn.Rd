@@ -14,7 +14,7 @@ estegn(x, alpha = 0.05)
 \item{alpha}{significance level}
 }
 \value{
-Return a list containing the following elements: G,V, Cov, StdErr, ConfInts
+Return a list containing the following elements: G, V, Cov, StdErr, ConfInts
 }
 \description{
 function performing statistical analysis to estimate the parameters

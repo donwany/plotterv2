@@ -18,3 +18,7 @@ plt
 x = c(2, 4, 6, 8, 10, 30, 45, 55)
 estegn(x, alpha = 0.01)
 ```
+
+### Submit to Cran
+  - https://cran.r-project.org/submit.html
+  
